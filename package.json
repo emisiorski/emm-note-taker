@@ -1,13 +1,18 @@
 {
   "dependencies": {
-    "express": "^4.17.2"
+    "express": "^4.17.2",
+    "fs": "^0.0.1-security",
+    "i": "^0.3.7",
+    "path": "^0.12.7",
+    "uuid": "^8.3.2"
   },
-  "name": "emisiorski-notetaker",
+  "name": "emm-note-taker",
   "description": "",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "keywords": [],
   "author": "",
