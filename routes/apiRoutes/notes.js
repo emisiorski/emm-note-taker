@@ -14,30 +14,12 @@ router.get('/notes', (req, res) => {
 });
 
 router.post('/notes', (req, res) => {
-    const { title, text } = req.body;
-    if (title && text) {
-        const newNote = {
-            title,
-            text,
-            id: uuid(),
-        };
+    var newNote = req.body;
 
-        fs.readFile('./db/db.json', 'utf8', (err, data) => {
-            if (err) {
-                console.error(err);
-            } else {
-                let savedNotes = JSON.parse(data);
-                savedNotes.push(newNote);
-                fs.writeFile(
-                    './db/db.json',
-                    JSON.stringify(savedNotes, null, 4)
-                );
-            }
-        });
-        res.json();
-    } else {
-        res.json('Error');
-    }
-});
+    var notes = JSON.parse(fs.readFileSync('./db/db.json'));
+    notes.push(newNote);
+    fs.writeFileSync('./db/db.json', JSON.stringify(notes));
+    res.json(notes);
+    });
 
 module.exports = router;
